@@ -2,7 +2,7 @@ provider "azuredevops" {
   version = ">= 0.0.1"
   # Remember to specify the org service url and personal access token details below
   org_service_url = "https://dev.azure.com/wjoubert0382"
-  personal_access_token = "xyisasl3gddtnt24hxyuqmz2xbitenteug4gqb6txjnwxhwzhn6q"
+  personal_access_token = "xxxxxxx"
 }
 
 resource "azuredevops_project" "terraform_ado_project" {
