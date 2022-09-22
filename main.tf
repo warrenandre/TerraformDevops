@@ -25,10 +25,6 @@ provider "azuredevops" {
   personal_access_token = $(PAT)
 }
 
-resource "azurerm_resource_group" "spacegame" {
-  name     = var.resource_group_name
-  location = var.resource_group_location
-}
 
 resource "azuredevops_project" "terraform_ado_project" {
   project_name       = var.project_name
