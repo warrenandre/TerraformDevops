@@ -6,9 +6,9 @@ variables:
 variables:
   buildConfiguration: 'Release'
   location: 'westus'
-  resource_group_name: 'terraform-rg'
-  resource_group_location: 'westus'
-  terraformstorageaccount: 'tfstoragewj'
+  resource_group_name: 'cloud-shell-storage-westeurope'
+  resource_group_location: 'westeurope'
+  terraformstorageaccount: 'csb10032001d0be11be'
   storagekey: 'PipelineWillGetThisValueRuntime'
   app_service_name: 'tailspin-wj'
   project_name:'Sample Terraform Project'
