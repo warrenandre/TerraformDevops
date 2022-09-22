@@ -3,34 +3,31 @@
 variables:
   - group: DEV
 
-variable "project_name" {
-    default = "Sample Terraform Project"
-}
+variables:
+  buildConfiguration: 'Release'
+  location: 'westus'
+  resource_group_name: 'terraform-rg'
+  resource_group_location: 'westus'
+  terraformstorageaccount: 'tfstoragewj'
+  storagekey: 'PipelineWillGetThisValueRuntime'
+  app_service_name: 'tailspin-wj'
+  project_name:'Sample Terraform Project'
+  description:'Sample Azure DevOps Project Created Using Terraform'
+  visibility:'private'
+  version_control:'Git'
+  work_item_template:'Agile'
 
-variable "description" {
-    default = "Sample Azure DevOps Project Created Using Terraform"
-}
-
-variable "visibility" {
-    default = "private"
-    #Options private, public
-}
-
-variable "version_control" {
-    default = "Git"
-    #Options Git, Tfvc
-}
-
-variable "work_item_template" {
-    default = "Agile"
-    #Options Agile, Basic, CMMI, Scrum
-}
 
 provider "azuredevops" {
   version = ">= 0.0.1"
   # Remember to specify the org service url and personal access token details below
   org_service_url = "https://dev.azure.com/wjoubert0382"
   personal_access_token = $(PAT)
+}
+
+resource "azurerm_resource_group" "spacegame" {
+  name     = var.resource_group_name
+  location = var.resource_group_location
 }
 
 resource "azuredevops_project" "terraform_ado_project" {
