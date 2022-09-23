@@ -1,33 +1,31 @@
-
-
-variables:
-  - group: DEV
-
-variables:
-  buildConfiguration: 'Release'
-  location: 'westus'
-  resource_group_name: 'tailspin-tf-wj-rg'
-  resource_group_location: 'westeurope'
-  terraformstorageaccount: 'tfstoragewj'
-  storagekey: 'PipelineWillGetThisValueRuntime'
-  app_service_name: 'tailspin-wj'
-  project_name:'Sample Terraform Project'
-  description:'Sample Azure DevOps Project Created Using Terraform'
-  visibility:'private'
-  version_control:'Git'
-  work_item_template:'Agile'
-
-
 provider "azuredevops" {
   version = ">= 0.0.1"
   # Remember to specify the org service url and personal access token details below
   org_service_url = "https://dev.azure.com/wjoubert0382"
-  personal_access_token = $(PAT)
+  personal_access_token = "__pat__"
 }
 
+variable "project_name" {
+  default = "Sample Terraform Project"
+}
 
+variable "description" {
+  default = "Sample Terraform Project"
+}
+
+variable "visibility" {
+  default = "private"
+}
+
+variable "version_control" {
+  default = "Git"
+}
+
+variable "work_item_template" {
+  default = "Agile"
+}
 resource "azuredevops_project" "terraform_ado_project" {
-  project_name       = var.project_name
+  name               = var.project_name
   description        = var.description
   visibility         = var.visibility
   version_control    = var.version_control
